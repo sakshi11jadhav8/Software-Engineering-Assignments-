@@ -1,6 +1,5 @@
 import datetime
 from email.message import EmailMessage
-import imghdr
 import pandas as pd
 import pywhatkit
 import smtplib
@@ -34,9 +33,9 @@ def sendEmail(receiver_email, name, msg):
     mail.set_content(msg)
 
     # Send an image as attachment
-    with open("bday.jpg", 'rb') as f:
+    with open("Birthday_Greeting/bday.jpg", 'rb') as f:
         image_data = f.read()
-        image_type = imghdr.what(f.name)
+        image_type = 'jpeg'
         image_name = f.name
 
     mail.add_attachment(image_data, maintype='image',
@@ -57,7 +56,7 @@ def sendEmail(receiver_email, name, msg):
 
 
 if __name__ == "__main__":
-    dataframe = pd.read_excel("birthday_list.xlsx")
+    dataframe = pd.read_excel("Birthday_Greeting/birthday_list.xlsx")
 
 
     # today's date
